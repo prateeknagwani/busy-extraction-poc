@@ -1,0 +1,9 @@
+node_modules/
+output/
+config.local.json
+
+# Real business data from the original SGP Distributors install — never
+# ships in the third-party handoff repo. See CLAUDE.md's no-delete rule:
+# these stay on disk, just untracked.
+ASD DATA/
+PMR DATA/

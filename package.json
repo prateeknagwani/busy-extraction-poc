@@ -1,0 +1,20 @@
+{
+  "name": "busy-extraction-poc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Phase 0 POC: figure out how to pull ledger/stock/voucher data out of Busy Accounting Software — ODBC introspection and XML shape-sniffing, side by side, mirroring tally-extraction-poc's approach for Tally.",
+  "main": "run.js",
+  "scripts": {
+    "list-dsns": "node run.js --list-dsns",
+    "introspect-odbc": "node run.js --introspect-odbc",
+    "parse-xml": "node run.js --parse-xml",
+    "test:mock": "node run.js --mock"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0",
+    "mssql": "^11.0.1"
+  },
+  "optionalDependencies": {
+    "odbc": "^2.4.9"
+  }
+}

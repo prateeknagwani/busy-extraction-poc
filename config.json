@@ -1,0 +1,28 @@
+{
+  "sqlserver": {
+    "_comment": "Primary path — Busy's data for this deployment lives directly in SQL Server. Found live on this machine via `npm run list-dsns` -> DSN 'BusyCOMP0001_db12026'. Real credentials for the read-only busy_sync_reader login go in config.local.json (gitignored, merged over this file at load time) — never here, so a password never ends up in git.",
+    "server": "YOUR_SERVER\\SQLEXPRESS",
+    "database": "YOUR_BUSY_DATABASE",
+    "user": "",
+    "password": "",
+    "_fyRotation_comment": "Folio 02 step 6 (see lib/busy-fy-database.js): `database` above is used as-is by default (MANUAL mode — update it by hand each fiscal year). To opt into auto-resolving it from today's date instead, set autoDetectFiscalYearDatabase=true and databasePattern (e.g. \"BusyCOMP0001_db1{fyStartYear}\" -- CONFIRMED live: db12026 holds vouchers dated 2026-04-01 onward, i.e. FY STARTING 2026, not ending 2026 -- an earlier version of this comment had the token backwards) in config.local.json -- leave both unset/false to keep the safer manual default.",
+    "autoDetectFiscalYearDatabase": false,
+    "databasePattern": ""
+  },
+  "odbc": {
+    "_comment": "Fallback/alternate path via a registered ODBC DSN (e.g. a 'SQL Server'/'ODBC Driver 17 for SQL Server' DSN pointed at the same instance, or Busy's own driver if it turns out to register one). Run `npm run list-dsns` on the real machine to find candidates.",
+    "dsn": "",
+    "uid": "",
+    "pwd": ""
+  },
+  "xml": {
+    "_comment": "Path to a real Busy data-export XML file (Busy > Administration > Data Export, or whatever the real menu path turns out to be) to sniff/parse. Only relevant if XML export ends up needed alongside/instead of the SQL Server path. Leave blank to only run against the bundled fixture.",
+    "sampleFile": ""
+  },
+  "backend": {
+    "_comment": "import-to-app.js's target — the warehouse-system backend's POST /tally/import. tallyImportKey must match the running backend's TALLY_IMPORT_KEY env var exactly (same shared-secret header floor_router.py's kiosk board and Tally's own /tally/sync-now use). firmId is this Busy company's row from GET/POST /firms (Folio 02 step 1) — omit only while this is the one and only firm synced (see _resolve_or_default_firm_id in tally_router.py). All 3 real values belong in config.local.json (gitignored), never here.",
+    "baseUrl": "http://localhost:8000",
+    "tallyImportKey": "",
+    "firmId": null
+  }
+}

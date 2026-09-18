@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Synthetic fixture — NOT a real Busy export. Shaped to exactly match the
+  production-confirmed structure in backend/app/services/xml_parser.py
+  (parse_so_xml/_extract_items), so mock-mode can prove the parsing logic
+  here is correct without needing a live Busy install. Anything outside this
+  shape (Ledgers, Stock Items, Sales/Purchase/Receipt/Payment vouchers) is
+  still unconfirmed — see README.
+-->
+<BusyExport>
+  <Masters>
+    <Item>
+      <Name>BRK-PAD-001</Name>
+      <Alias>BRAKE PAD SET</Alias>
+    </Item>
+    <Item>
+      <Name>OIL-FLT-204</Name>
+      <Alias>OIL FILTER</Alias>
+    </Item>
+  </Masters>
+  <Transactions>
+    <SaleOrder>
+      <VchSeriesName>SalesOrder</VchSeriesName>
+      <VchNo>SO-1001</VchNo>
+      <MasterName1>ABC Auto Traders</MasterName1>
+      <tmpTotalAmt>4250</tmpTotalAmt>
+      <ItemDetail>
+        <ItemName>BRK-PAD-001</ItemName>
+        <Qty>10</Qty>
+        <ItemMRP>425</ItemMRP>
+        <ListPrice>399</ListPrice>
+      </ItemDetail>
+      <ItemDetail>
+        <ItemName>OIL-FLT-204</ItemName>
+        <Qty>5</Qty>
+        <ListPrice>150</ListPrice>
+      </ItemDetail>
+    </SaleOrder>
+    <SaleOrder>
+      <VchSeriesName>DirectOrdr</VchSeriesName>
+      <VchNo>DO-2001</VchNo>
+      <MasterName1>XYZ Motors</MasterName1>
+      <tmpTotalAmt>1500</tmpTotalAmt>
+      <ItemDetail>
+        <ItemName>OIL-FLT-204</ItemName>
+        <Qty>10</Qty>
+        <ListPrice>150</ListPrice>
+      </ItemDetail>
+    </SaleOrder>
+  </Transactions>
+</BusyExport>
